@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SummaryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get("product", [ProductController::class, "index"])->name("product");
+Route::post("cart/add", [ProductController::class, "addToCart"]);
+Route::post('cart/update', [ProductController::class, 'updateCart']);
+Route::get("summary", [SummaryController::class, "index"])->name("summary");
+Route::get("history", [HistoryController::class, "index"])->name("history");
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
