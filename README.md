@@ -8,7 +8,7 @@
 1. git clone
 2. composer install
 3. npm run build
-4. php artisan migrate
+4. php artisan migrate atau bisa import dari file .SQL dalam root project
 5. php artisan serve
 
 
