@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Undocumented function
+     *
+     * @return \App\Models\Cart
+     */
+    public function cartItems()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
