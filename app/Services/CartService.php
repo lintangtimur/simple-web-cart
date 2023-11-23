@@ -73,4 +73,9 @@ class CartService
         return $user->cartItems()->get();
     }
 
+    public function deleteCart(User $user)
+    {
+    
+        $deleted = Cart::where('user_id', '=', $user->id)->delete();
+    }
 }

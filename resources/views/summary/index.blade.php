@@ -15,6 +15,8 @@
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
               </div>
 
+              <form action="confirm" method="post">
+              @csrf
               @foreach ($carts as $item)
                   
               
@@ -43,6 +45,7 @@
                         <input
                             type="number"
                             id="quantity_{{$item->id}}"
+                            name="product_{{$item->product_id}}"
                             value="{{$item->quantity}}"
                             class="h-10 w-24 rounded border-gray-200 text-center sm:text-sm"
                             onchange="updateQuantity({{$item->id}}, this.value)"
@@ -89,8 +92,10 @@
                   <span>Total cost</span>
                   <span class="totalCost">{{Number::format($summaries['total'])}}</span>
                 </div>
-                {{-- <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Confirm</button> --}}
-                <a href="history" class="block bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full text-center">Confirm</a>
+                <input type="hidden" name="total" class="totalHidden" value="{{$summaries['total']}}">
+                <button type="submit" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Confirm</button>
+              </form>
+                {{-- <a href="history" class="block bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full text-center">Confirm</a> --}}
 
               </div>
             </div>

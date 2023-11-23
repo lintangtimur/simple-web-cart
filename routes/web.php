@@ -4,6 +4,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SummaryController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::get("product", [ProductController::class, "index"])->name("product");
 Route::post("cart/add", [ProductController::class, "addToCart"]);
 Route::post('cart/update', [ProductController::class, 'updateCart']);
 Route::get("summary", [SummaryController::class, "index"])->name("summary");
+Route::post('confirm', [TransactionController::class, 'confirm'])->name('confirm');
 Route::get("history", [HistoryController::class, "index"])->name("history");
 
 Route::middleware('auth')->group(function () {

@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Services\CartService;
+use App\Services\TransactionService;
 
 class HistoryController extends Controller
 {
-    private CartService $cartService;
+    private TransactionService $transactionService;
 
-    public function __construct(CartService $cartService)
+    public function __construct(TransactionService $transactionService)
     {
-        $this->cartService = $cartService;
+        $this->transactionService = $transactionService;
     }
 
     public function index()
     {
-        $history = $this->cartService->getHistoryBuy(auth()->user());
-        $totalPurchase = $this->cartService->getSummaries(auth()->user())['total'];
-        
+        $tx = $this->transactionService->getTx(auth()->user());
 
-        return view("history.index", compact('history', 'totalPurchase'));
+        return view("history.index", compact('tx'));
     }
 }
