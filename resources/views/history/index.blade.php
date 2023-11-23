@@ -8,6 +8,9 @@
                         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                         <h2 class="text-2xl font-bold tracking-tight text-gray-900">Pembelianmu</h2>
 
+                        @if ($history->isEmpty())
+                        Anda belum menambahkan ke dalam cart
+                        @else   
                         <div class="flex flex-col border-b border-gray-300 py-2">
                             <div class="flex items-center justify-between mb-2">
                                 <p class="text-lg font-semibold">Invoice #12345</p>
@@ -34,6 +37,7 @@
                             </div>
                             <!-- Status information -->
                             <div class="mt-2">
+                                
                                 <span class="px-2 py-1 rounded font-semibold text-white 
                                     {{ strtotime('now') - strtotime($history[0]->created_at) > 3 * 60 * 60 ? 'bg-red-500' : 'bg-green-500' }}">
                                     {{ strtotime('now') - strtotime($history[0]->created_at) > 3 * 60 * 60 ? 'Closed' : 'Open' }}
@@ -42,6 +46,8 @@
 
                             
                         </div>
+                        @endif
+                        
                         
                         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         </div>  
