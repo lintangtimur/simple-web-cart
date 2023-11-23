@@ -1,6 +1,7 @@
 # Simple Web Cart
 
 ### Database Design
+![image](https://github.com/lintangtimur/simple-web-cart/assets/16686825/e7889987-b8c8-4a2c-a259-328bad34dba4)
 
 ### Screenshot
 ![image](https://github.com/lintangtimur/simple-web-cart/assets/16686825/34ac3e90-0148-4725-ba4c-9454f0b1277a)
